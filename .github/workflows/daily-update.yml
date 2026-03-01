@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: '30 7 * * *'
+    - cron: '35 14 * * *'   # fixed daily time
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Daily Commit Step - 22f1000310@ds.study.iitm.ac.in
         run: |
-          echo "Update time: $(date)" >> daily_log.txt
+          echo "Run ID: $RANDOM $(date)" >> daily_log.txt
           git add daily_log.txt
           git commit -m "Daily automated update $(date)"
-          git push
+          git push origin HEAD:main
